@@ -1,4 +1,4 @@
-use std::{collections::Hashmap, usize};
+use std::collections::HashMap;
 /// Check Permutation Given two strings, write a method to decide if one is permutation of the
 ///
 

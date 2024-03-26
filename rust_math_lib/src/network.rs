@@ -8,7 +8,14 @@ pub struct Network {
 }
 
 impl Network {
-    pub fn new(&self, layers: Vec<usize>) -> Network {
-        let mut weights = vec![];
+    pub fn new(layers: Vec<usize>) -> Network {
+        let weights = Vec::new();
+
+        Network {
+            layers,
+            weights,
+            bias: Vec::new(),
+            data: Vec::new(),
+        }
     }
 }

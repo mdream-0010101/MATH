@@ -1,3 +1,4 @@
+pub mod binary_search;
 pub mod check_permutation;
 pub mod is_unique;
 pub mod one_away;

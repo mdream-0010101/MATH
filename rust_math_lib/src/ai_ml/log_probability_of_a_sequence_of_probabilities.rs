@@ -27,6 +27,6 @@ mod tests {
 
         // Assert (approximately equal, considering float-point artithmetics)
         let expected = 5f64.ln() + 0.2f64.ln() + 0.8f64.ln();
-        assert!((log_prob - expected).abs() < le - 10);
+        assert!((log_prob - expected).abs() < 1e-10);
     }
 }

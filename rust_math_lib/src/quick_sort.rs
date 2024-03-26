@@ -31,11 +31,11 @@ mod tests {
     fn test_quick_sort() {
         let mut arr1 = [5, 2, 3, 1, 4];
         quick_sort(&mut arr1);
-        assert_eq!(arr, [1, 2, 3, 4, 5]);
+        assert_eq!(arr1, [1, 2, 3, 4, 5]);
 
         let mut arr2 = [5, 5, 5, 5, 5];
         quick_sort(&mut arr2);
-        assert_eq!(arr2m [5, 5, 5, 5, 5]);
+        assert_eq!(arr2, [5, 5, 5, 5, 5]);
 
         let mut arr3: [char; 5] = ['e', 'a', 'c', 'd', 'b'];
         quick_sort(&mut arr3);

@@ -1,6 +1,6 @@
 pub fn dot_product(a: &[f64], b: &[f64]) -> Result<f64, &'static str> {
     if a.len() != b.len() {
-        Err("Vectors must be of the same length");
+        return Err("Vectors must be of the same length");
     } else {
         Ok(a.iter().zip(b.iter()).map(|(x, y)| x * y).sum())
     }

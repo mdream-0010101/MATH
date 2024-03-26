@@ -1,5 +1,6 @@
 [package]
 name = "rust_math_lib"
+author = "Christopher V. Maverick"
 version = "0.1.0"
 edition = "2021"
 
@@ -8,4 +9,5 @@ edition = "2021"
 [dependencies]
 nalgebra = "0.32.4"
 ndarray = "0.15.6"
+ndarray-linalg = "0.16.0"
 rand = "0.8.5"

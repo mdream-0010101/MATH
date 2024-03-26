@@ -27,23 +27,14 @@ impl MarbleBag {
         }
     }
 
-    /// Calculates the probability of drawing a marble of a specific color from the bag,
-    /// applying Laplace Smoothing to the account for unseen colors.
-    ///
-    /// # Arguments
-    ///
-    /// * `color` - A string slice that holds the color of the marble to calculate the probability
-    /// for.
-    ///
-    /// # Returns
-    ///
-    /// The probability (as f64) of drawing a marble of the specificed color.
-    fn probability_of_colo(&self, color: &str) -> f64 {
-        let color_count = self.marbles.get(color).unwrap_or(&0) + 1; // add 1 to the count for
-                                                                     // Laplace smoothing
-        let total_count = self.total_marbles + self.marbles.len() as u32; // adjust total count for
-                                                                          // Laplace smoothing
-        color_count as f64 / total_count as f64;
+    fn probability_of_color(&self, color: &str) -> f64 {
+        match self.marbles.get(color) {
+            Some(&color_count) => {
+                let total_count = self.total_marbles as f64 + self.marbles.len() as f64;
+                (color_count as f64 + 1.0) / total_count
+            }
+            None => 1.0 / (self.total_marbles as f64 + self.marbles.len() as f64),
+        }
     }
 }
 
@@ -63,12 +54,12 @@ mod tests {
         let bag = MarbleBag::new(marbles);
 
         // Calculates the probability of drawing a blue marble from a sunseen yellow marble.
-        let blue_prob = bag.probability_of_colo("blue");
-        let yellow_prob = bag.probability_of_colo("yellow");
+        let blue_prob = bag.probability_of_color("blue");
+        let yellow_prob = bag.probability_of_color("yellow");
 
         // Verify: Chec that the probabilities match the expected values after applying laplace
         // smoothing.
         assert_eq!(blue_prob, 51.0 / 104.0);
-        assert_eq!(yellow_prob, 1 / 104.0);
+        assert_eq!(yellow_prob, 1.0 / 104.0);
     }
 }
